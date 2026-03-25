@@ -1,0 +1,27 @@
+{% from "/bebit-tech-hubspot-theme/macros/string-translation-macro.html" import GET_STRING_TRANSLATION %}
+
+<section class="whitepaper-single-banner bg-white" id="{{ module.section_id }}">
+  <div class="container">
+    <a href="{{ group.absolute_url }}" class="btn-back">
+      {{ GET_STRING_TRANSLATION("Go Back") }}
+      <svg class="icon">
+        <use xlink:href="#arrow-left"></use>
+      </svg>
+    </a>
+    <div class="d-flex">
+      <div class="text">			
+        <div class="feature-info">
+          {% if content.tag_list %}
+					{% set isEventClosed = content.tag_list[0].name == '已結束' or content.tag_list[0].name == 'Closed' %}
+          <span class="label"><span class="pulse {{'--gray' if isEventClosed }}"></span>{{ content.tag_list[0].name }}</span>
+          {% endif %}
+          <time datetime="{{ format_datetime(content.publish_date_local_time, "Y/MM/dd") }}">{{ format_datetime(content.publish_date_local_time, "Y/MM/dd") }}</time>
+        </div>
+        	<h1 class="h2">{{ content.title }}</h1>
+      </div>
+      <div class="img">
+        <img src="{{ content.featured_image }}" alt="{{ content.featured_image_alt_text }}">
+      </div>
+    </div>
+  </div>
+</section>
