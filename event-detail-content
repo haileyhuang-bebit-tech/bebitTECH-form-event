@@ -1,0 +1,25 @@
+{% import "../../macros/macro.html" as macro %}
+
+<section class="feature-post feature-post--event {% if module.style.background_white_gray %} bg-gray {% endif %}" id="{{ module.section_id }}">
+  <div class="container">
+    <div class="d-flex align-center" style="flex-wrap: nowrap">
+      <div class="text">
+        <div class="text-wrap single-content" style="word-break: break-all">
+					{% if module.add_custom_heading_text %}
+					  <h3>{{ module.custom_heading }}</h3>
+					{% else %}
+            <h3>{{ content.title }}</h3>
+					{% endif %}
+          {% if module.use_custom_content %}
+					  {{ module.custom_content }}
+					{% else %}
+					  {{ content.post_body }}
+					{% endif %}
+        </div>
+      </div>
+      <div class="img">
+        {{ macro.image(module.image, '') }}
+      </div>
+    </div>
+  </div>
+</section>
